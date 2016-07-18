@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta http-equiv="content-type" content="text/html"; charset="utf-8">
+    </head>
+    <body>
+        <script>
+            function send()
+            {
+                
+                var xmlhttp;
+                if(window.XMLHttpRequest)  //浏览器支持XMLHttpRequest对象
+                    {
+                        xmlhttp=new XMLHttpRequest;
+                    }
+                else{
+                    xmlhttp=new AtiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function()
+                {
+                    if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                        {
+                            document.getElementById("outPut").innerHTML=xmlhttp.responseText;
+                        }
+                }
+                xmlhttp.open("GET","http://192.168.8.4/getRequest.php?q=qwerty",true);  /*这里的GET必须要大写*/
+                xmlhttp.send();
+            }
+        </script>
+        <p>创建xmlHttpRequest对象</p>
+        <h1 id="outPut" onclick="send()"> hello world</h1>
+    </body>
+</html>

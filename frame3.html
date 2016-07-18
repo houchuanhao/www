@@ -1,0 +1,43 @@
+<html>
+    <head>
+         <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <meta http-equiv="content-type" content="text/html"; charset="utf-8">
+        <link href="css/style.css" rel="stylesheet" type="text/css"> <!--- 连接CSS--->
+        <script type="text/javascript" src="js/sign_up.js"></script> <!--- 连接JS--->
+        <style>
+            .head{
+                
+            }
+        </style>
+    </head>
+    <body onmousemove="ReChangeform()">
+        <div class="head">
+            <div>
+                注册
+            </div>
+        </div>
+        <center> <!---使用center标签可以让表单居中，center标签内的所有内容都居中--->
+            <br>
+            <form action="sign_up.php" method="get">
+                <div class="input">
+                                <input type="text" name="user_name" value="用户名"  onkeydown="del(this,'用户名')"  id="user_name">
+                    
+                </div>
+                <div
+                     class="input">
+                    
+                                <input type="text" name="email" value="邮箱" onkeydown="del(this,'邮箱')" id="email">
+            <br>
+                </div>
+                <div class="input">
+                                <input type="text" name="passworld" value="密码" onkeydown="del(this,'密码')" id="passworld">
+                    
+            <br>
+                </div>
+                <div class="input" id="sign_up_div">
+                    <input type="submit"  value="注册" id="sign_up">
+                </div>
+            </form>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.head{
+    background-color: dimgray;
+    height: 100px;
+}
+.head div{  /*派生选择器 ,选择.head 标签下的所有div元素*/
+    color: azure;
+    text-align: center;
+    position: relative;
+    top:20px;
+}
+body{
+    background-color:darkgray;
+}
+input{
+    width: 35%;
+    height: 30px;
+    color: darkgrey;
+}
+.input{
+    padding-top: 20px;
+    background-color: aqua;
+}
+.form{
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#sign_up_div{
+    padding-bottom: 20px;
+}
+#sign_up{
+    font-weight: bolder;
+    border: 0px;
+    color: aliceblue;
+    background-color:chartreuse;
+}
+center{
+    padding-top: 40px;
+}
