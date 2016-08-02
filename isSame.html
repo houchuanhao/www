@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单实验</title>
+    <script>
+        function check(form) {
+            var p1 = form.passwd1;
+            var p2 = form.passwd2;
+            if (p1.value != p2.value) {
+                p2.oninvalid();
+                return false;
+            }
+            return true;
+        }
+        onload = function() {
+            var p2 = document.forms["my_f1"].passwd2;
+            p2.oninvalid = function() {
+                this.setCustomValidity("密码不一致，请重新输入");
+            }
+            p2.oninput = function() {
+                this.setCustomValidity("");
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" method="post" name="my_f1" onsubmit="return check(this);">
+        <p>密码：
+            <input type="password" required="true" name="passwd1" />
+        </p>
+        <p>密码确认：
+            <input type="password" required="true" name="passwd2" />
+        </p>
+        <p>
+            <input type="submit" value="提交" />
+        </p>
+    </form>
+</body>
+
+</html>

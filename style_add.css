@@ -1,0 +1,113 @@
+/* 这是添加的css样式 */
+.info-block {
+margin:0px 0;
+/*border: 1px solid black;*/
+}
+.head_thumb{
+width:20%;
+float:left;
+}
+.head_thumb img{
+display:inline-block;
+max-width:150%;
+border-radius:100px;
+-webkit-border-radius:100px;
+-moz-border-radius:100px;
+}
+.info_thumb {
+  width: 60%;
+  height: 30%;
+  float:right;
+
+}
+.faceui {
+  width: 60%;
+	/*border: 1px solid red;*/
+	list-style-type: none; /*去除列表项前的小点*/
+	padding: 0; /*列表的填充*/
+	/*background-color: gray;*/
+	margin-left: 1%;
+  margin-top: -3%;
+}
+.faceli {
+	width: 60%;
+	height: 10%;
+
+  margin-top: 8%;
+	margin-left: 1%;
+	/*background-color: pink;*/
+	text-align: left;
+  color:#0c928d;
+  font-size:23.2px;
+}
+/* 个人信息块 */
+.info_title {
+font-size:20px;
+color:#0c928d;
+font-weight:400;
+margin: 9px 100px 2px -55px;
+display:inline-block;
+letter-spacing:-0.5px;
+}
+.personal_info_block {
+  width: 90%;
+  border: 2px solid black;
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+}
+.info_list {
+  margin-left: 2%;
+  color:#0c928d;
+  font-size: 20px;
+  font-weight: 300;
+}
+/* 认证信息块 */
+.verify_title {
+font-size:20px;
+color:#0c928d;
+font-weight:400;
+margin: 185px 100px 2px -4px;
+display:inline-block;
+letter-spacing:-0.5px;
+}
+.verify_info_block {
+  width: 90%;
+  border: 2px solid black;
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+}
+.verify_info_list {
+  margin-left: 2%;
+  color:#0c928d;
+  font-size: 20px;
+  font-weight: 300;
+}
+/* 极小的按钮 */
+a.button_most_small_left {
+    background-color: #0c928d;
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    float: left;
+    margin-left: 8%;
+}
+a.button_most_small_right {
+    background-color: #ff0000e6;
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 2px 5px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    float: right;
+    margin-right: 8%;
+}
