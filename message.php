@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     header("Content-type: text/html; charset=utf-8"); 
 //载入ecd类
 require_once('lib/Ecd.class.php');
@@ -29,9 +29,10 @@ $ecd = new Ecd(url,app_key,app_secret,format);
              echo json_encode(array('code'=>'0'));
         }
         else{
+            $ecd->send_sms_code($phone_number,'1',$mycode,'');
             echo json_encode(array('code'=>'1'));
             //发送验证码短信
-           // $ecd->send_sms_code($phone_number,'1','1234','');
+         
         }
     
 ?>
