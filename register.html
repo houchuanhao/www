@@ -11,16 +11,15 @@
 
           <!-- 注册页面 -->
         <div class="registerform">
-          <form class="" id="" action="" method="post">
-            <label>用户名:</label>
-            <input type="text" name="RegisterUserName" id="RegisterUserName" value=""  placeholder="输入用户名" class="form_input required" />
+          <form class="" id="" action="" >
+            <label>手机号:</label>
+            <input type="text" name="RegisterUserName" id="RegisterUserName" value=""  placeholder="输入用户名" class="form_input required" required="required" />
             <label>密码:</label>
-            <input type="password" name="RegisterPassword1" id="RegisterPassword1" value="" placeholder="应大于六位" class="form_input required " />
-            <label>确认密码:</label>
-            <input type="password" name="RegisterPassword2" id="RegisterPassword2" value="" placeholder="两次密码应一致" class="form_input required " />
-            <label>邮箱:</label>
-            <input type="text" name="RegisterEmail" id="RegisterEmail" placeholder="您将收到邮箱验证信息" class="form_input required email" />
-            <input type="button" name="submit" class="form_submit" id="submit" value="注册" onclick="sign()" />
+            <input type="password" name="RegisterPassword1" id="RegisterPassword1" value="" placeholder="应大于六位" class="form_input required " required="required" />
+            <input type="button" name="RegisterPassword2" id="RegisterPassword2" value="发送验证码" placeholder="两次密码应一致" class="form_submit "  required="required" onclick="get_message()" />
+            <label>验证码:</label>
+            <input type="text" name="RegisterEmail" id="RegisterEmail" placeholder="您将收到邮箱验证信息" class="form_input required email" required="required" />
+            <input type="submit" name="submit" class="form_submit" id="submit" value="注册" onclick="sign()" />
           </form>
         </div>
 

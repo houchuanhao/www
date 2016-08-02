@@ -1,13 +1,61 @@
 //$("#login").text(user_name);
+function get_message()
+{
+    var test=0;
+    //  检验手机号是否已经注册
+    $.ajax({
+        url:address+"sign.php",
+        type:"POST",
+        data:{phonenumber:$("#RegisterUserName").val(),type:"1"},
+        dataType:"json",
+        error:function (){
+            alert("error11111");
+            //return;
+        },
+        success:function(data)
+        {
+            test=1;
+            if(data.code==1)
+                {
+                    alert("手机号未被注册");
+                }
+            else{
+                alert("手机号已被注册");
+                return;
+            }
+        }
+    });
+    if(test==0)
+        return;
+    //获取验证码
+    for(i=1;i<=4;i++)
+        {
+           var c=Math.ceil(Math.random()*10);
+            if(c==10)
+                c=0;
+            str=str+c.toString();
+        }
+    alert(str);
+    //将验证码发送至后台
+    $.ajax({
+        url:address+"message.php",
+        type:"POST",
+        data:{code:str},
+        dataType:"json",
+        error:function()
+        {
+            alert("将验证码发送至后台失败");
+        },
+        success:function(data)
+        {
+            alert("验证码未");
+        }
+    })
+}
+
+$(".required").attr("required","required");
 function sign()
 {
-    /*if($("#username").length!=11)
-        {
-            alert("手机号不符合规范");
-            return;
-        }
-    else
-    */
     var params=$("input").serialize();
     $.ajax({
         url:address+"test.php",
@@ -28,11 +76,6 @@ function sign()
 }
 function login()
 {
-    //alert("helloworld");
-    //alert(document.cookie);
-    //$.cookie("username","123456789");
-    //alert(getCookie("username"));
-   // alert($.cookie("username"));
     var str=document.getElementById("LLoginForm");
     var xmlhttp;
     if(window.XMLHttpRequest){
@@ -60,59 +103,14 @@ function login()
                            });
                         alert("登录成功");
                     }
-                    else alter("服务器异常，登录失败");
-                //$.cookie("username",$("#username");
-                //$("#login_href").attr('href',"about.html");
-                //$("#to_hide").hide();
-                //window.location.href="about.html"; 
+                    else alert("服务器异常，登录失败"+get_value);
                }  
-                //user_name=get_value; document.getElementById("login").innerHTML=user_name;
         }
     }
-    /*xmlhttp.open("GET",address+"get_user.php?username="+document.getElementById("Username").value+"&password="+document.getElementById("password").value,true);
-    */
     xmlhttp.open("POST",address+"get_user.php");
    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); xmlhttp.send("username="+document.getElementById("username").value+"&password="+document.getElementById("password").value);
 }
 
-/*
-$(document).ready(function(){
-    $("#submit").click(function(){
-        alert("clicked");
-        $.post(
-                address+"get_user.php",
-               {phone_number:$("#Username").val(),password:$("#password").val()}
-              ).done(function(data){
-           //$("#Username").text(data.username); 
-            document.getElementById("Username").innerHTML=data.username;
-        });
-        alert("how?");
-    });
-    
-});
-*/
-/*
-$(document).ready(function{
-                  $("#submit").click(function(){
-    $.ajax({
-        type: "GET",
-        url: address+"get_user.php",
-        data: {username:$("#Username").val(),password:$("#password").val()},
-        dataType: "json",
-        
-    });
-    
-});
-                  
-                  });
-                  */
-/*
-$(document).ready(function(){
-   $("#submit").click(function(){
-     $("#login").text($("#Username").val());
-   });     
-});
-*/
 function getCookie(c_name)
 {
 if (document.cookie.length>0)
