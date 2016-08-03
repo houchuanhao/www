@@ -11,16 +11,17 @@ function getCode( n)
         }
     return str;
 }
-function get_message()
+function get_message(a) 
 {
     var str=getCode(4);
-    var phone_number=$("#RegisterUserName").val();
+    var phone_number=$("#phone_number").val();
+    alert(phone_number);
     var test=-1;
     //  检验手机号是否已经注册
     var message=$.ajax({
         url:address+"message.php",
         type:"POST",
-        data:{phonenumber:$("#RegisterUserName").val(),type:"1",mycode:str},
+        data:{phonenumber:phone_number,type:a,mycode:str},
         dataType:"json",
         error:function (){
             alert("error11111");
@@ -29,22 +30,35 @@ function get_message()
         },
         success:function(data)
         {
-            if(data.code==1)
+            if(data.code==1)   //数据库中不存在手机号
                 { 
+                    if(a=="sign")  //注册
+                    {
                     $.session.set("phone_number",phone_number);
                     $.session.set("code",str);
-                    alert("手机号未被注册");
-                    
-                    //alert("hello");
+                        alert("验证码发送成功");
+                    }
+                    if(a=="forget")  //忘记密码
+                        {
+                           alert("改手机号未被注册，请前去注册"); 
+                        }
                 }
-            else{
-                    alert("手机号已被注册");
+            else{   //数据库中存在此手机号
+                    if(a=="sign") 
+                        {
+                            alert("改手机号已被注册");
+                        }
+                if(a=="forget")
+                    {
+                    $.session.set("phone_number",phone_number);
+                    $.session.set("code",str); 
+                        alert("验证码发送成功1111");
+                    }
                     // return;
             }
         }
     });
     alert(str);
-    //将验证码发送至后台
 }
 
 $(".required").attr("required","required");
@@ -52,12 +66,14 @@ function sign()
 {
     var code_number=$.session.get("phone_number");  
     //上一次短信验证的手机号
-    if(code_number!=$("#RegisterUserName").val())
+    if(code_number!=$("#phone_number").val())
         {
             alert("请进行短信验证");
+            alert(code_number);
+            alert($("#phone_number").val());
             return;
         }
-    if($.session.get("code")!=$("#RegisterEmail").val())  
+    if($.session.get("code")!=$("#code").val())  
         //检验验证码
         {
             alert("验证码错误");
@@ -65,6 +81,9 @@ function sign()
         }
     //-----------提交请求
     var params=$("input").serialize();
+    //var phone_number=$("#phone_number").val();
+    //var password=$("#password").val();
+     alert(params.phone_number111);
     $.ajax({
         url:address+"sign.php",
         type:"POST",
@@ -77,8 +96,8 @@ function sign()
         success:function(data)
         {
             alert("注册成功");
-            alert(data.RegisterUserName);
-            alert(data.RegisterPassword1);
+            alert(data.phone_number);
+            alert(data.Password);   //空
         }
     });
         
@@ -119,7 +138,27 @@ function login()
     xmlhttp.open("POST",address+"get_user.php");
    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); xmlhttp.send("username="+document.getElementById("username").value+"&password="+document.getElementById("password").value);
 }
-
+function forget_password()
+{
+    
+    var params=$("input").serialize();
+    $.ajax({
+        url:address+"sign.php",
+        type:"POST",
+        data:params,
+        //{username:"hello",password:"yest"},
+        dataType:"json",
+        error:function(){
+            alert("error");
+        },
+        success:function(data)
+        {
+            alert("修改密码成功");
+            alert(data.phone_number);
+            alert(data.Password);
+        }
+    });
+}
 function getCookie(c_name)
 {
 if (document.cookie.length>0)

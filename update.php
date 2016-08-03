@@ -6,11 +6,8 @@
     require("db_config.php");
     $conn=mysql_connect($mysql_server_name,$mysql_user_name,$mysql_password);
     mysql_select_db($mysql_database,$conn);
-   // $sql="select * from user where phone_number='$phone_number' and password='$password'";
+    $user_password=$_POST['Password'];
     $phone_number=$_POST['phone_number'];
-    $password=$_POST['Password'];
-    $sql="insert into user(phone_number,password) values('$phone_number','$password')";
-    mysql_query($sql,$conn);
-    //$code=$_POST['code'];
+    $sql="update user set password ='$user_password' where phone_number = '$phone_number'";
     echo json_encode($_POST);
 ?>
