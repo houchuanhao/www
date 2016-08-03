@@ -15,7 +15,7 @@ function get_message(a)
 {
     var str=getCode(4);
     var phone_number=$("#phone_number").val();
-    alert(phone_number);
+    //alert(phone_number);
     var test=-1;
     //  检验手机号是否已经注册
     var message=$.ajax({
@@ -52,13 +52,12 @@ function get_message(a)
                     {
                     $.session.set("phone_number",phone_number);
                     $.session.set("code",str); 
-                        alert("验证码发送成功1111");
+                        alert("验证码发送成功");
                     }
                     // return;
             }
         }
     });
-    alert(str);
 }
 
 $(".required").attr("required","required");
@@ -69,8 +68,8 @@ function sign()
     if(code_number!=$("#phone_number").val())
         {
             alert("请进行短信验证");
-            alert(code_number);
-            alert($("#phone_number").val());
+            //alert(code_number);
+            //alert($("#phone_number").val());
             return;
         }
     if($.session.get("code")!=$("#code").val())  
@@ -96,8 +95,8 @@ function sign()
         success:function(data)
         {
             alert("注册成功");
-            alert(data.phone_number);
-            alert(data.Password);   //空
+            //alert(data.phone_number);
+           // alert(data.Password);   //空
         }
     });
         
@@ -117,7 +116,7 @@ function login()
         if(xmlhttp.readyState==4&&xmlhttp.status==200){
             
             var get_value=xmlhttp.responseText;
-            alert(get_value);
+            //alert(get_value);
             if(get_value==0)  //登录失败
                 {
                     alert("登录失败:用户名或密码错误");
@@ -143,7 +142,7 @@ function forget_password()
     
     var params=$("input").serialize();
     $.ajax({
-        url:address+"sign.php",
+        url:address+"update.php",
         type:"POST",
         data:params,
         //{username:"hello",password:"yest"},

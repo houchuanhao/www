@@ -9,5 +9,6 @@
     $user_password=$_POST['Password'];
     $phone_number=$_POST['phone_number'];
     $sql="update user set password ='$user_password' where phone_number = '$phone_number'";
+    mysql_query($sql,$conn);
     echo json_encode($_POST);
 ?>
