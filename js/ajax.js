@@ -24,6 +24,7 @@ function get_message(a)
         data:{phonenumber:phone_number,type:a,mycode:str},
         dataType:"json",
         error:function (){
+            alert(address+"message.php");
             alert("error11111");
             test=0;
             return;
