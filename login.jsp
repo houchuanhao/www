@@ -12,10 +12,10 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="javafx.print.Printer" %>
-<%@ page import="javax.servlet.http.HttpServletRequest" %>
 <%@ page import="javax.jws.soap.SOAPBinding" %>
-<%@ page import="" %>
 <%@ page import="javax.xml.transform.Result" %>
+<%@ page import="com.Connect" %>
+<%@ page import="jdk.nashorn.internal.ir.RuntimeNode" %>
 <html>
 <head>
     <title>Title</title>
@@ -23,10 +23,13 @@
 </head>
 <body>
 <%
+
+    //Connect connect1=new Connect();
     HttpServletRequest servletRequest;  //用于获取请求
     Class.forName("com.mysql.jdbc.Driver"); //加载数据库驱动
     Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
     //上面是连接数据库
+    Statement stmt=conn.createStatement();
     //String str="insert into test_table(name) values('123')";
     String str="select * from test_table";
     ResultSet rs=stmt.executeQuery(str);
@@ -35,16 +38,16 @@
         System.out.println(name);
         out.print(name);
     }
-    request.setCharacterEncoding("utf-8");
+    reque
+    stmt.setCharacterEncoding("utf-8");
     response.setCharacterEncoding("utf-8");
     String UserName=request.getParameter("UserName"); //
-    String Password=request.getP arameter("Password");
+    String Password=request.getParameter("Password");
     Statement statement=conn.createStatement(); //向数据库发送sql语句的接口
     String sql="select * from User where UserName="+UserName+"and Password="+Password;
     ResultSet result=statement.executeQuery(sql);
     if(result!=null){
         response.addHeader("Login","sussful"); //登陆成功
-
     }
 
 %>
